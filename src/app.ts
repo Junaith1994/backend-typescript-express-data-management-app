@@ -1,12 +1,20 @@
-import express, { Request, Response } from "express";
+import express, { Application, Request, Response } from "express";
 
-const app = express();
-const port = 3000;
+var cors = require("cors");
+
+const app: Application = express();
+const port: number = 3000;
+
+// Middlewares
+app.use(express.json());
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello Junaith");
+  res.send("Data Management App is Ready");
 });
 
 app.listen(port, () => {
   console.log(`App is listeing on port ${port}`);
 });
+
+export default app;
